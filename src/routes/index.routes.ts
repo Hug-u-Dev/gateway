@@ -1,10 +1,12 @@
 import {Router} from "express";
 import logger from "../config/logger";
 import { proxyDiary } from "../proxy/diary.proxy";
+import { proxyAuth } from "../proxy/auth.proxy";
 
 export const routes = Router();
 
 routes.use("/diary", proxyDiary);
+routes.use("/auth", proxyAuth);
 
 routes.get("/", (req,res) => {
 	logger.error("this is an error log");
