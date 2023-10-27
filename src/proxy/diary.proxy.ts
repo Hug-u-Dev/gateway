@@ -1,4 +1,4 @@
-import { createProxyMiddleware} from "http-proxy-middleware";
+import { createProxyMiddleware } from "http-proxy-middleware";
 
 const proxyDiaryOptions = {
 	target: "http://localhost:3003", // DIARY URL
@@ -7,6 +7,5 @@ const proxyDiaryOptions = {
 		"^/diary": "", // Remove the '/diary' prefix when forwarding requests to the microservice
 	},
 };
-
 
 export const proxyDiary = createProxyMiddleware(proxyDiaryOptions);

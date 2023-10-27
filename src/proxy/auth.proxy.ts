@@ -1,4 +1,4 @@
-import { createProxyMiddleware} from "http-proxy-middleware";
+import { createProxyMiddleware, fixRequestBody } from "http-proxy-middleware";
 
 const proxyAuthOptions = {
 	target: "http://localhost:3004", // Auth URL
@@ -6,7 +6,7 @@ const proxyAuthOptions = {
 	pathRewrite: {
 		"^/auth": "", // Remove the prefix when forwarding requests to the microservice
 	},
+	onProxyReq: fixRequestBody,
 };
-
 
 export const proxyAuth = createProxyMiddleware(proxyAuthOptions);
